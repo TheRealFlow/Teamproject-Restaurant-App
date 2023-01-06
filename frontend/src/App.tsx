@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
-import AdminDashboard from "./Pages/AdminDashboard";
-import {HashRouter, Route, Routes} from "react-router-dom";
-import AdminAddProduct from "./Components/AdminAddProduct";
+import AdminDashboard from "./Pages/AdminDashboard"
 
 function App() {
   return (
