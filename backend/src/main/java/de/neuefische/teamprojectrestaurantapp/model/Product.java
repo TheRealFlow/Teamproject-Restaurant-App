@@ -10,14 +10,7 @@ public class Product {
     private String name;
     private float price;
     private int quantity;
-    private String category;
-        /*
-        - vorspeise
-        - fleisch
-        - allergene
-        - drinks_alcoholic
-         */
-
+    private String category; // einzelnen Kategorien kommen aus dem Frontend
     private String description;
     private int spicyScale;
     private float drinkSize;
