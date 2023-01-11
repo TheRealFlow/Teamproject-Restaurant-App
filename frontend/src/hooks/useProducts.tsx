@@ -7,7 +7,7 @@ export default function useProducts() {
 
     useEffect(() => {
         (async () => {
-            const response = await axios.get("/api/restaurant")
+            const response = await axios.get("/products")
             setProducts(response.data);
         })();
     }, []);
