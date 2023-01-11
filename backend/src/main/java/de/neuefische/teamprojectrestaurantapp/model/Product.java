@@ -3,7 +3,7 @@ package de.neuefische.teamprojectrestaurantapp.model;
 import lombok.Data;
 
 @Data
-public class Product {
+public class Product{
 
     private String id;
     private String image;

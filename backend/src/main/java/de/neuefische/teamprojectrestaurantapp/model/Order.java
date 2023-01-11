@@ -6,7 +6,6 @@ import lombok.Data;
 public class Order {
 
     private String id;
-    private String orderNumber;
     private String firstName;
     private String lastName;
     private String street;
@@ -14,7 +13,12 @@ public class Order {
     private int zipCode;
     private String eMailAddress;
     private String mobileNumber;
+    private String paymentInfo;
+
+    private String username;
+
+    private String orderNumber;
     private String orderInformation; // Informationen kommen aus dem Frontend
     private int totalPrice;
-    private String paymentInfo;
+
 }
