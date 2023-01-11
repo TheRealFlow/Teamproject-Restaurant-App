@@ -1,15 +1,10 @@
 import React from 'react';
 import './App.css';
-import Home from "./pages/home";
-import Admin from "./pages/admin";
+import AdminDashboard from "./Pages/AdminDashboard"
 
 function App() {
-
   return (
-      <>
-          <Home/>
-          <Admin/>
-      </>
+        <AdminDashboard/>
   );
 }
 

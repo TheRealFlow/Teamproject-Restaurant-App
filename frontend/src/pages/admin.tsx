@@ -1,11 +1,16 @@
+import {useState} from "react";
 import AdminAddProduct from "../Components/AdminAddProduct";
-import React, {useState} from "react";
-import products from "../hooks/useProducts";
-export default function Admin() {
+import AdminEditProduct from "../Components/AdminEditProduct";
+
+export default function AdminDashboard() {
     const [showAddForm, setShowAddForm] = useState(false);
+    const [showEditPage, setShowEditPage] = useState(false);
 
     const handleShowAddForm = () => {
         setShowAddForm(current => !current);
+    }
+    const handleShowEditPage = () => {
+        setShowEditPage(current => !current);
     }
 
     return (
@@ -17,10 +22,10 @@ export default function Admin() {
                 <AdminAddProduct/>
             )}
 
-            {products.length < 1 ?
-                <p>Keine Producte vorhanden...</p> :
-                <div>Platzhalter für ProductList</div>
-            }
+            <button onClick={handleShowEditPage}>Edit Product</button>
+            {showEditPage && (
+                <AdminEditProduct/>
+            )}
         </>
     )
 }
