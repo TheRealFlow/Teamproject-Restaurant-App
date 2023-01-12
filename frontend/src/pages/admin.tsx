@@ -10,6 +10,12 @@ export default function Admin({products} : {products: Product[]}) {
         setShowAddForm(current => !current);
     }
 
+    const convert = Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 2,
+    });
+
     return (
         <>
             <h1>Admin Dashboard</h1>
@@ -21,7 +27,12 @@ export default function Admin({products} : {products: Product[]}) {
 
             {products.length >= 1 ? products.map((product) =>
                 <ul key={product.id}>
-                    <li>{product.name}</li>
+                    <li>
+                        <p>{product.name}</p>
+                        <p>{convert.format(product.price)}</p>
+                        <p>{product.description}</p>
+                    </li>
+
                 </ul>
             ) : <p>Keine Producte vorhanden...</p>}
         </>
