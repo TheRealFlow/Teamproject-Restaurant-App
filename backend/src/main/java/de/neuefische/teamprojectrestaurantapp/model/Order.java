@@ -23,6 +23,6 @@ public class Order {
 
     private String orderNumber;
     private String orderInformation; // Informationen kommen aus dem Frontend
-    private int totalPrice;
+    private float totalPrice;
 
 }
