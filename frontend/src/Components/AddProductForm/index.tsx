@@ -1,4 +1,6 @@
-export default function AdminAddProduct() {
+import "./style.css"
+
+export default function AddProductForm() {
     return(
         <>
             <h1>Add new Product</h1>
@@ -7,6 +9,7 @@ export default function AdminAddProduct() {
             <input type={"text"} placeholder={"Price"}/>
             <input type={"text"} placeholder={"Image URL"}/>
             <select>
+                <option>Category</option>
                 <option>Fleischgericht</option>
                 <option>Vegetarisch</option>
                 <option>Getränk</option>
