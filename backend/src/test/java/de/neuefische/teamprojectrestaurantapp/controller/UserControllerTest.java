@@ -34,7 +34,7 @@ class UserControllerTest {
         String userAsJson = """
                 {"id":"1","firstName":"firstName","lastName":"lastName","street":"street","city":"city","zipCode":20144,"mobileNumber":"mobileNumber","paymentInfo":"paymentInfo","username":"username","password":"password","userType":"userType","emailAddress":"eMailAddress"}""";
 
-        //WHEN &THEN
+        //WHEN & THEN
         mockMvc.perform(
                         post("/user")
                                 .contentType(MediaType.APPLICATION_JSON)
@@ -52,7 +52,7 @@ class UserControllerTest {
         String userAsJson = """
                 {"id":"3","firstName":"firstName","lastName":"lastName","street":"street","city":"city","zipCode":20144,"mobileNumber":"mobileNumber","paymentInfo":"paymentInfo","username":"username","password":"password","userType":"userType","emailAddress":"eMailAddress"}""";
 
-        //WHEN &THEN
+        //WHEN & THEN
         mockMvc.perform(
                         put("/user/3")
                                 .contentType(MediaType.APPLICATION_JSON)
@@ -72,13 +72,14 @@ class UserControllerTest {
                 "paymentInfo", "username", "password", "userType");
         userRepo.save(firstUser);
 
-        //WHEN &THEN
+        //WHEN & THEN
         mockMvc.perform(
                         get("/user"))
                 .andExpect(status().is(200))
                 .andExpect(content().string(
                         """
-                                [{"id":"1","firstName":"firstName","lastName":"lastName","street":"street","city":"city","zipCode":20144,"mobileNumber":"mobileNumber","paymentInfo":"paymentInfo","username":"username","password":"password","userType":"userType","emailAddress":"eMailAddress"}]"""));
+                                [{"id":"1","firstName":"firstName","lastName":"lastName","street":"street","city":"city","zipCode":20144,"mobileNumber":"mobileNumber","paymentInfo":"paymentInfo","username":"username","password":"password","userType":"userType","emailAddress":"eMailAddress"}]""")
+                );
     }
 
     @DirtiesContext
@@ -90,11 +91,13 @@ class UserControllerTest {
                 "paymentInfo", "username", "password", "userType");
         userRepo.save(firstUser);
 
-        //WHEN &THEN
+        //WHEN & THEN
         mockMvc.perform(
                         delete("/user/1"))
                 .andExpect(status().is(200))
                 .andExpect(content().string(""));
+
+
     }
 
 
