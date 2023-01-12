@@ -1,7 +1,7 @@
 import "./style.css"
 import {Product} from "../Product";
 
-export default function ProductCard({product} : {product:Product}) {
+export default function ProductCard({product, deleteProduct} : {product:Product, deleteProduct: (id: string) => void}) {
 
     const convert = Intl.NumberFormat('de-DE', {
         style: 'currency',
@@ -16,6 +16,8 @@ export default function ProductCard({product} : {product:Product}) {
                 <h2>{product.name}</h2>
                 <h4>{convert.format(product.price)}</h4>
                 <p>{product.description}</p>
+                <button>Edit</button>
+                <button className={"delete-btn"} onClick={() => deleteProduct(product.id)}>Delete</button>
             </li>
         </>
     )
