@@ -1,6 +1,6 @@
 import "./style.css"
 import useProducts from "../../hooks/useProducts";
-import ProductCard from "../ProductCard";
+import ProductCardUser from "../ProductCardUser";
 
 export default function ProductList() {
     const {products} = useProducts();
@@ -8,10 +8,13 @@ export default function ProductList() {
     return (
         <>
             {products.length >= 1 ? products.map((product) =>
+
                 <ul key={product.id}>
-                    <ProductCard product={product}/>
+
+                    <ProductCardUser product={product}/>
+
                 </ul>
-            ) : <p>Keine Producte vorhanden...</p>}
+            ) : <p>Keine Produkte vorhanden...</p>}
         </>
     )
 }
