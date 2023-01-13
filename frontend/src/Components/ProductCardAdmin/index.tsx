@@ -4,7 +4,7 @@ import {useState} from "react";
 import EditProductForm from "../EditProductForm";
 
 
-export default function ProductCardAdmin({product, deleteProduct, editProduct}: { product: Product, deleteProduct: (id: string) => void, editProduct: (id: string) => void }) {
+export default function ProductCardAdmin({product}: { product: Product}) {
     const [showEditForm, setShowEditForm] = useState(false);
     const [editClicked, setEditClicked] = useState("Edit")
 
@@ -22,7 +22,6 @@ export default function ProductCardAdmin({product, deleteProduct, editProduct}: 
             "Close" : "Edit")
     }
     function showEditProductForm() {
-        editProduct(product.id);
         handleShowEditForm();
         handleButtonClick()
     }
@@ -39,7 +38,7 @@ export default function ProductCardAdmin({product, deleteProduct, editProduct}: 
                 <EditProductForm/>
             )}
 
-            <button className={"delete-btn"} onClick={() => deleteProduct(product.id)}>Delete</button>
+            <button className={"delete-btn"} onClick={}>Delete</button>
         </li>
     )
 }

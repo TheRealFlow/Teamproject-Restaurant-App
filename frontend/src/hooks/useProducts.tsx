@@ -1,32 +1,42 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {Product} from "../Components/Product";
+import {toast} from "react-toastify"
 
 export default function useProducts() {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        (async () => {
-            const response = await axios.get("/products")
-            setProducts(response.data);
-        })();
+        getAllProducts()
     }, []);
 
-    async function deleteProduct(id: string) {
-        await axios.delete(`/products/${id}`);
-        setProducts(products.filter(product => product.id !== product.id))
+    const getAllProducts = () => {
+        axios.get("/products")
+            .then(response => response.data)
+            .then(data => setProducts(data))
+            .catch((error) => toast.error(error.message))
     }
 
-    async function editProduct(id: string) {
-        const updated = {...products}
-        await axios.put(`/products/${id}`, updated);
-        setProducts(products.map(product => product.id === product.id ? {...product, ...updated} : product))
+    const addNewProduct = (product:Product) => {
+        axios.post("/products", product)
+            .then(() => toast.success("Product added to Database"))
+            .then(getAllProducts)
+            .catch((error) => toast.error(error.message))
     }
 
-    async function addProduct(product: Product) {
-        const response = await axios.post("/products", product);
-        setProducts([...products, response.data]);
+    const editProduct = (product:Product) => {
+        axios.put("/products", product)
+            .then(getAllProducts)
+            .then(() => toast.success("Product updated"))
+            .catch((error) => toast.error(error.message))
     }
 
-    return {products, deleteProduct, addProduct, editProduct}
+    const deleteProduct = (id:string) => {
+        axios.delete(`/products/${id}`)
+            .then(getAllProducts)
+            .then(() => toast.success("Product deleted"))
+            .catch((error) => toast.error(error.message))
+    }
+
+    return {products, getAllProducts, addNewProduct, editProduct, deleteProduct}
 }

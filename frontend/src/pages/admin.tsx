@@ -6,7 +6,8 @@ import ProductListAdmin from "../Components/ProductListAdmin";
 
 export default function Admin() {
     const [showAddForm, setShowAddForm] = useState(false);
-    const [buttonClicked, setButtonClicked] = useState("Add new Product")
+    const [buttonClicked, setButtonClicked] = useState("Add new Product");
+
 
     const handleShowAddForm = () => {
         setShowAddForm(current => !current);
