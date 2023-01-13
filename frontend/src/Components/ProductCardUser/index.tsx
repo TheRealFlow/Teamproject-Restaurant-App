@@ -25,7 +25,7 @@ export default function ProductCardUser({product}: { product: Product }) {
                 <p>{product.description}</p>
                 <button onClick={handleShowAddForm}>Details</button>
                 {showAddForm && (
-                    <ProductDetails product={product}/>
+                    <ProductDetails product={product} onClose={()=> setShowAddForm(false)}/>
                 )}
                 
             </li>
