@@ -1,12 +1,20 @@
 import React, {FormEvent, FormEventHandler, useState} from "react";
 import axios from "axios";
 import {Product} from "./model/Product";
+import internal from "stream";
 
 export default function AddProduct(){
 
     const [product,setProduct]=useState<Product>({
+        name:"",
         id: "",
         prize:"",
+        quantity : "",
+        category : "",
+        description : "",
+        spicyScale : "",
+        drinkSize : "",
+        image : "",
     })
     const onChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
       setProduct({
