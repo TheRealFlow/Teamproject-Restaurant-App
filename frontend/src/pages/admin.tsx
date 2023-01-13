@@ -1,5 +1,5 @@
 import {useState} from "react";
-import ProductList from "../Components/ProductList";
+
 import AddProductForm from "../Components/AddProductForm";
 
 
@@ -27,7 +27,7 @@ export default function Admin() {
             {showAddForm && (
                 <AddProductForm/>
             )}
-            <ProductList />
+
         </>
     )
 }
