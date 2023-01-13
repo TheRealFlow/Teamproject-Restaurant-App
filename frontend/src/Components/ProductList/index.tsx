@@ -1,17 +1,20 @@
 import "./style.css"
 import useProducts from "../../hooks/useProducts";
-import ProductCard from "../ProductCard";
+import ProductCardUser from "../ProductCardUser";
 
 export default function ProductList() {
-    const {products, deleteProduct} = useProducts();
+    const {products} = useProducts();
 
     return (
         <>
             {products.length >= 1 ? products.map((product) =>
+
                 <ul key={product.id}>
-                    <ProductCard product={product} deleteProduct={deleteProduct}/>
+
+                    <ProductCardUser product={product}/>
+
                 </ul>
-            ) : <p>Keine Producte vorhanden...</p>}
+            ) : <p>Keine Produkte vorhanden...</p>}
         </>
     )
 }
