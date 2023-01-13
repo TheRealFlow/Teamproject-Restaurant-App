@@ -2,7 +2,7 @@ import "./style.css"
 import {Product} from "../Product";
 import ProductCardUser from "../ProductCardUser";
 
-export default function ProductDetails({product}: { product: Product }) {
+export default function ProductDetails({product, onClose}: { product: Product; onClose: ()=> void; }) {
 
     const convert = Intl.NumberFormat('de-DE', {
         style: 'currency',
@@ -14,7 +14,7 @@ export default function ProductDetails({product}: { product: Product }) {
     return (
         <>
             <li>
-                <button>x</button>
+                <button onClick={onClose}>x</button>
                 <img alt={""} src={product.image}/>
                 <h2>{product.name}</h2>
                 <h4>{convert.format(product.price)}</h4>

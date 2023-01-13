@@ -7,6 +7,7 @@ import {AllProducts} from "./Components/FilterComponents /AllProducts";
 import {Starter} from "./Components/FilterComponents /Starter";
 import {MainCourse} from "./Components/FilterComponents /MainCourse";
 import {Dessert} from "./Components/FilterComponents /Dessert";
+import ShoppingCart from "./pages/shoppingCart";
 
 
 
@@ -14,25 +15,23 @@ function App() {
 
   return (
       <>
-        <Home/>
-        <Admin/>
+
 
           <BrowserRouter>
-
               <ul>
-                  <li><Link  to={"/allProducts"} >All Products</Link></li>
-                  <li><Link  to={"/starter"} >Starter</Link></li>
-                  <li><Link  to={"/mainCourse"} >Main Course</Link></li>
-                  <li><Link  to={"/dessert"} >Dessert</Link></li>
+                  <li><Link  to={"/admin"}>Login</Link></li>
+                  <li><Link  to={"/"}>Shop</Link></li>
+                  <li><Link  to={"/shoppingcart"} >Shopping Cart</Link></li>
+
+
               </ul>
 
 
-
               <Routes>
-                  <Route path={"/allProducts"} element={<AllProducts/>}></Route>
-                  <Route path={"/starter"} element={<Starter/>}></Route>
-                  <Route path={"/mainCourse"} element={<MainCourse/>}></Route>
-                  <Route path={"/dessert"} element={<Dessert/>}></Route>
+                  <Route path={"/"} element={<Home/>}></Route>
+                  <Route path={"/admin"} element={<Admin/>}></Route>
+                  <Route path={"/shoppingcart"} element={<ShoppingCart/>}></Route>
+
               </Routes>
           </BrowserRouter>
 
