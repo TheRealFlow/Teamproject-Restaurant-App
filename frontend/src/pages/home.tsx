@@ -1,6 +1,6 @@
 import ProductList from "../Components/ProductList";
 import ProductDetails from "../Components/ProductDetails";
-import {Product} from "../Components/Product";
+import {Product} from "../types/Product";
 import {Link} from "react-router-dom";
 import React from "react";
 

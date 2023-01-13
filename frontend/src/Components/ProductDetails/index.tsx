@@ -1,5 +1,5 @@
 import "./style.css"
-import {Product} from "../Product";
+import {Product} from "../../types/Product";
 import ProductCardUser from "../ProductCardUser";
 
 export default function ProductDetails({product, onClose}: { product: Product; onClose: ()=> void; }) {

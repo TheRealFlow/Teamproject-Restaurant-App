@@ -19,11 +19,9 @@ function App() {
 
           <BrowserRouter>
               <ul>
-                  <li><Link  to={"/admin"}>Login</Link></li>
-                  <li><Link  to={"/"}>Shop</Link></li>
-                  <li><Link  to={"/shoppingcart"} >Shopping Cart</Link></li>
-
-
+                  <li><Link to={"/admin"}>Login</Link></li>
+                  <li><Link to={"/"}>Shop</Link></li>
+                  <li><Link to={"/shoppingcart"} >Shopping Cart</Link></li>
               </ul>
 
 

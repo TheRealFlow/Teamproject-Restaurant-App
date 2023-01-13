@@ -1,5 +1,5 @@
 import "./style.css"
-import {Product} from "../Product";
+import {Product} from "../../types/Product";
 import AddProductForm from "../AddProductForm";
 import ProductDetails from "../ProductDetails";
 import {useState} from "react";
