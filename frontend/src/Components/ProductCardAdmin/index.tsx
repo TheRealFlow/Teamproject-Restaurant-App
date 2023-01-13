@@ -4,9 +4,22 @@ import {useState} from "react";
 import EditProductForm from "../EditProductForm";
 
 
-export default function ProductCardAdmin({product}: { product: Product}) {
+type ProductCardProps = {
+    product: Product;
+    editProduct: (newProduct: Product) => void;
+    deleteProduct: (id: string) => void;
+}
+
+export default function ProductCardAdmin(props: ProductCardProps) {
     const [showEditForm, setShowEditForm] = useState(false);
     const [editClicked, setEditClicked] = useState("Edit")
+
+    const deleteHandler = () => {
+        if (props.product.id === undefined){
+            return null;
+        }
+        props.deleteProduct(props.product.id);
+    }
 
     const convert = Intl.NumberFormat('de-DE', {
         style: 'currency',
@@ -28,17 +41,17 @@ export default function ProductCardAdmin({product}: { product: Product}) {
 
     return (
         <li>
-            <img alt={""} src={product.image}/>
-            <h2>{product.name}</h2>
-            <h4>{convert.format(product.price)}</h4>
-            <p>{product.description}</p>
+            <img alt={""} src={props.product.image}/>
+            <h2>{props.product.name}</h2>
+            <h4>{convert.format(props.product.price)}</h4>
+            <p>{props.product.description}</p>
 
             <button onClick={showEditProductForm}>{editClicked}</button>
             {showEditForm && (
                 <EditProductForm/>
             )}
 
-            <button className={"delete-btn"} onClick={}>Delete</button>
+            <button className={"delete-btn"} onClick={deleteHandler}>Delete</button>
         </li>
     )
 }

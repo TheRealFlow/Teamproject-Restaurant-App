@@ -2,9 +2,11 @@ import {useState} from "react";
 
 import AddProductForm from "../Components/AddProductForm";
 import ProductListAdmin from "../Components/ProductListAdmin";
+import useProducts from "../hooks/useProducts";
 
 
 export default function Admin() {
+    const {products, getAllProducts, editProduct, deleteProduct} = useProducts();
     const [showAddForm, setShowAddForm] = useState(false);
     const [buttonClicked, setButtonClicked] = useState("Add new Product");
 
@@ -29,7 +31,8 @@ export default function Admin() {
             {showAddForm && (
                 <AddProductForm />
             )}
-            <ProductListAdmin/>
+            <ProductListAdmin deleteProduct={deleteProduct} editProduct={editProduct} getAllProducts={getAllProducts}
+                              products={products}/>
         </>
     )
 }

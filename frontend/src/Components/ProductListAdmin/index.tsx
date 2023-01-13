@@ -1,15 +1,21 @@
 import "./style.css"
-import useProducts from "../../hooks/useProducts";
 import ProductCardAdmin from "../ProductCardAdmin";
+import {Product} from "../Product";
 
-export default function ProductListAdmin() {
-    const {products} = useProducts();
+type ProductListProps = {
+    products: Product[];
+    getAllProducts: () => void;
+    editProduct: (newProduct: Product) => void;
+    deleteProduct: (id: string) => void;
+}
+
+export default function ProductListAdmin(props: ProductListProps) {
 
     return (
         <>
-            {products.length >= 1 ? products.map((product) =>
+            {props.products.length >= 1 ? props.products.map((product) =>
                 <ul key={product.id}>
-                    <ProductCardAdmin product={product} />
+                    <ProductCardAdmin product={product}  deleteProduct={props.deleteProduct} editProduct={props.editProduct}/>
                 </ul>
             ) : <p>Keine Produkte vorhanden...</p>}
         </>
