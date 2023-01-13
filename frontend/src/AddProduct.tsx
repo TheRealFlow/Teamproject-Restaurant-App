@@ -1,6 +1,6 @@
 import React, {FormEvent, FormEventHandler, useState} from "react";
 import axios from "axios";
-import {Product} from "./model/Product";
+import {Product} from "./model/Product.ts";
 
 export default function AddProduct(){
 

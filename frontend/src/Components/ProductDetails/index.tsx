@@ -13,7 +13,7 @@ export default function ProductDetails({product}: { product: Product }) {
 
     return (
         <>
-            <li>
+            <li className={"liDetails"}>
                 <button>x</button>
                 <img alt={""} src={product.image}/>
                 <h2>{product.name}</h2>

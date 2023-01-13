@@ -5,9 +5,13 @@ export function AllProducts(){
     return(
 
         <div className={"distanceTop"}>
+            All Products
             <ProductList />
 
-        </div>
 
-    )
+        </div>)
+
+
+
+
 }

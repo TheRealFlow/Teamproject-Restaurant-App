@@ -12,7 +12,7 @@ export default function Home() {
             <button>Shopping Cart</button>
             <br></br>
             <button>Filter Function</button>
-            <ProductList />
+
 
         </>
     )

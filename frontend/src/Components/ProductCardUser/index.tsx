@@ -18,7 +18,7 @@ export default function ProductCardUser({product}: { product: Product }) {
     }
     return (
         <div>
-            <li>
+            <li className={"liCard"}>
                 <img alt={""} src={product.image}/>
                 <h2>{product.name}</h2>
                 <h4>{convert.format(product.price)}</h4>
