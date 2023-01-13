@@ -3,3 +3,17 @@ body {
     justify-content: center;
     text-align: center;
 }
+
+li {
+    display: inline;
+}
+
+li {
+    float: left;
+}
+li  {
+    display: block;
+    text-align: center;
+    padding: 14px 146px;
+    text-decoration: none;
+}
