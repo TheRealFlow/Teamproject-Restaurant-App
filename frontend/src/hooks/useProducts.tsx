@@ -12,5 +12,21 @@ export default function useProducts() {
         })();
     }, []);
 
-    return {products}
+    async function deleteProduct(id: string) {
+        await axios.delete(`/products/${id}`);
+        setProducts(products.filter(product => product.id !== product.id))
+    }
+
+    async function editProduct(id: string) {
+        const updated = {...products}
+        await axios.put(`/products/${id}`, updated);
+        setProducts(products.map(product => product.id === product.id ? {...product, ...updated} : product))
+    }
+
+    async function addProduct(product: Product) {
+        const response = await axios.post("/products", product);
+        setProducts([...products, response.data]);
+    }
+
+    return {products, deleteProduct, addProduct, editProduct}
 }
