@@ -3,11 +3,8 @@ import './App.css';
 import Admin from "./pages/admin";
 import Home from "./pages/home";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
-import {AllProducts} from "./Components/FilterComponents /AllProducts";
-import {Starter} from "./Components/FilterComponents /Starter";
-import {MainCourse} from "./Components/FilterComponents /MainCourse";
-import {Dessert} from "./Components/FilterComponents /Dessert";
 import ShoppingCart from "./pages/shoppingCart";
+
 
 
 

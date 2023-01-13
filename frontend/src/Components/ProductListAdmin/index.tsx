@@ -1,9 +1,9 @@
 import "./style.css"
 import useProducts from "../../hooks/useProducts";
-import ProductCardUser from "../ProductCardUser";
+import ProductCardAdmin from "../ProductCardAdmin";
 
-export default function ProductList() {
-    const {products} = useProducts();
+export default function ProductListAdmin() {
+    const {products, deleteProduct, editProduct} = useProducts();
 
     return (
         <>
@@ -11,7 +11,7 @@ export default function ProductList() {
 
                 <ul key={product.id}>
 
-                    <ProductCardUser product={product}/>
+                    <ProductCardAdmin product={product} deleteProduct={deleteProduct} editProduct={editProduct}/>
 
                 </ul>
             ) : <p>Keine Produkte vorhanden...</p>}

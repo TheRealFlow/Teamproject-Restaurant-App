@@ -1,7 +1,4 @@
-import ProductList from "../Components/ProductList";
-import ProductDetails from "../Components/ProductDetails";
-import {Product} from "../Components/Product";
-import {Link} from "react-router-dom";
+import ProductListUser from "../Components/ProductListUser";
 import React from "react";
 
 export default function Home() {
@@ -13,7 +10,7 @@ export default function Home() {
 
             <br></br>
             <button>Filter Function</button>
-            <ProductList />
+            <ProductListUser />
 
         </>
     )

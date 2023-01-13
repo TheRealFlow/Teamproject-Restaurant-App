@@ -3,7 +3,7 @@ import axios from "axios";
 import {Product} from "../Components/Product";
 
 export default function useProducts() {
-    const [products, setProducts] = useState<Product[]>([])
+    const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
         (async () => {

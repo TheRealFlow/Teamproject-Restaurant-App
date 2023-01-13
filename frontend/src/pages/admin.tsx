@@ -1,6 +1,7 @@
 import {useState} from "react";
 
 import AddProductForm from "../Components/AddProductForm";
+import ProductListAdmin from "../Components/ProductListAdmin";
 
 
 export default function Admin() {
@@ -14,7 +15,7 @@ export default function Admin() {
         setButtonClicked(buttonClicked === "Add new Product" ?
             "Close Formular" : "Add new Product")
     }
-    function clickAction() {
+    function showAddProductForm() {
         handleButtonClick();
         handleShowAddForm()
     }
@@ -23,11 +24,11 @@ export default function Admin() {
         <>
             <h1>Admin Dashboard</h1>
 
-            <button onClick={clickAction}>{buttonClicked}</button>
+            <button onClick={showAddProductForm}>{buttonClicked}</button>
             {showAddForm && (
-                <AddProductForm/>
+                <AddProductForm />
             )}
-
+            <ProductListAdmin/>
         </>
     )
 }
