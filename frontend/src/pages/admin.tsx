@@ -1,5 +1,5 @@
-import {useState} from "react";
-import ProductList from "../Components/ProductList";
+import React, {useState} from "react";
+
 import AddProductForm from "../Components/AddProductForm";
 
 
@@ -23,11 +23,19 @@ export default function Admin() {
         <>
             <h1>Admin Dashboard</h1>
 
+
+
+
             <button onClick={clickAction}>{buttonClicked}</button>
             {showAddForm && (
                 <AddProductForm/>
             )}
-            <ProductList />
+
+
+
+
         </>
     )
 }
+
+//<ProductList />
