@@ -1,21 +1,23 @@
 import "./style.css"
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import {Product} from "../Product";
 import useProducts from "../../hooks/useProducts";
 
 interface Props {
     id:string;
+    onUpdate: () => void;
 }
 const categories = ["Vorspeise", "Hauptgericht", "Dessert", "Getränk"];
 
-const UpdateProductForm: React.FC<Props> = ({id}) => {
+const UpdateProductForm: React.FC<Props> = ({id, onUpdate}) => {
     const [product, setProduct] = useState<Product>({} as Product);
     const {updateProduct} = useProducts();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = useCallback(async (e: React.FormEvent) => {
         e.preventDefault();
-        updateProduct(product);
-    };
+        await updateProduct(product);
+        onUpdate();
+    }, [product, updateProduct, onUpdate]);
 
     return (
         <>

@@ -11,8 +11,13 @@ type ProductCardProps = {
 
 export default function ProductCardAdmin(props: ProductCardProps) {
     const [productId, setProductId] = useState("");
+    const [render, setRender] = useState({});
     const [showEditForm, setShowEditForm] = useState(false);
     const [editClicked, setEditClicked] = useState("Edit")
+
+    const handleUpdate = () => {
+        setRender(render);
+    }
 
     const deleteHandler = () => {
         if (props.product.id === undefined){
@@ -48,7 +53,7 @@ export default function ProductCardAdmin(props: ProductCardProps) {
 
             <button onClick={showEditProductForm}>{editClicked}</button>
             {showEditForm && (
-                <UpdateProductForm id={productId}/>
+                <UpdateProductForm id={productId} onUpdate={handleUpdate}/>
             )}
 
             <button className={"delete-btn"} onClick={deleteHandler}>Delete</button>
