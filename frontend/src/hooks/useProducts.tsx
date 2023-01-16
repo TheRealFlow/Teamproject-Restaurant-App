@@ -12,22 +12,22 @@ export default function useProducts() {
         })();
     }, []);
 
-    const addProduct = async (product: { name: string }) => {
+    const addProduct = async (product: { image: string; price: number; name: string; description: string; category: string }) => {
         const res = await axios.post('/products', product);
         setProducts([...products, res.data]);
     };
 
-/*    const editProduct = async (product: Product) => {
-        const res = await axios.put(`/products/${id}`, product);
+    const updateProduct = async (product: Product) => {
+        const res = await axios.put(`/products/${product.id}`, product);
         setProducts(
             products.map(p => (p.id === product.id ? res.data : p))
         );
-    };*/
+    };
 
     const deleteProduct = async (id: string) => {
         await axios.delete(`/products/${id}`);
         setProducts(products.filter(p => p.id !== id));
     };
 
-    return { products, addProduct, deleteProduct };
+    return { products, addProduct, updateProduct, deleteProduct };
 };

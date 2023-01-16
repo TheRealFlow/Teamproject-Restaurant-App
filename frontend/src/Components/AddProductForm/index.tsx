@@ -3,15 +3,24 @@ import "./style.css"
 import useProducts from "../../hooks/useProducts";
 
 interface Props {}
+const categories = ["Vorspeise", "Hauptgericht", "Dessert", "Getränk"];
 
 const AddProductForm: React.FC<Props> = () => {
-    const [name, setName] = useState('');
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState(0);
+    const [image, setImage] = useState("");
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
     const {addProduct} = useProducts();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        addProduct({ name });
-        setName('');
+        addProduct({ name, price, image, description, category });
+        setName("");
+        setPrice(0);
+        setImage("");
+        setDescription("");
+        setCategory("");
     };
 
     return(
@@ -19,17 +28,18 @@ const AddProductForm: React.FC<Props> = () => {
             <h1>Add new Product</h1>
         <form onSubmit={handleSubmit}>
             <input type={"text"} value={name} placeholder={"Name"} onChange={e => setName(e.target.value)}/>
-            {/*<input type={"number"} placeholder={"Price"} />
-            <input type={"url"} placeholder={"Image URL"} value={product.image} />
-            <select>
-                <option>Category</option>
-                <option>Starter</option>
-                <option>Main Course</option>
-                <option>Dessert</option>
-                <option>Beverage</option>
+            <input type={"number"} value={price} placeholder={"Price"} onChange={e => setPrice(parseFloat(e.target.value))}/>
+            <input type={"url"} value={image} placeholder={"Image URL"} onChange={e => setImage(e.target.value)}/>
+            <select value={category} onChange={e => setCategory(e.target.value)}>
+                <option value={""} disabled>Category</option>
+                {categories.map(c => (
+                    <option key={c} value={c}>
+                        {c}
+                    </option>
+                    ))}
             </select>
-            <input type="text" placeholder="Description" />
-            <input type="text" placeholder="Quantity"/>*/}
+            <input type="text" value={description} placeholder="Description" onChange={e => setDescription(e.target.value)}/>
+            {/*<input type="text" placeholder="Quantity"/>*/}
             <button type={"submit"}>Add new Product</button>
         </form>
         </>

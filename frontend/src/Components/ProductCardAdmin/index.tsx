@@ -1,7 +1,7 @@
 import "./style.css"
 import {Product} from "../Product";
 import {useState} from "react";
-import EditProductForm from "../EditProductForm";
+import UpdateProductForm from "../UpdateProductForm";
 
 
 type ProductCardProps = {
@@ -10,6 +10,7 @@ type ProductCardProps = {
 }
 
 export default function ProductCardAdmin(props: ProductCardProps) {
+    const [productId, setProductId] = useState("");
     const [showEditForm, setShowEditForm] = useState(false);
     const [editClicked, setEditClicked] = useState("Edit")
 
@@ -47,7 +48,7 @@ export default function ProductCardAdmin(props: ProductCardProps) {
 
             <button onClick={showEditProductForm}>{editClicked}</button>
             {showEditForm && (
-                <EditProductForm/>
+                <UpdateProductForm id={productId}/>
             )}
 
             <button className={"delete-btn"} onClick={deleteHandler}>Delete</button>
