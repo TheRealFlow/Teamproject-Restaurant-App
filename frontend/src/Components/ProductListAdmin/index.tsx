@@ -4,8 +4,6 @@ import {Product} from "../Product";
 
 type ProductListProps = {
     products: Product[];
-    getAllProducts: () => void;
-    editProduct: (newProduct: Product) => void;
     deleteProduct: (id: string) => void;
 }
 
@@ -15,7 +13,7 @@ export default function ProductListAdmin(props: ProductListProps) {
         <>
             {props.products.length >= 1 ? props.products.map((product) =>
                 <ul key={product.id}>
-                    <ProductCardAdmin product={product}  deleteProduct={props.deleteProduct} editProduct={props.editProduct}/>
+                    <ProductCardAdmin product={product} deleteProduct={props.deleteProduct} />
                 </ul>
             ) : <p>Keine Produkte vorhanden...</p>}
         </>

@@ -6,7 +6,6 @@ import EditProductForm from "../EditProductForm";
 
 type ProductCardProps = {
     product: Product;
-    editProduct: (newProduct: Product) => void;
     deleteProduct: (id: string) => void;
 }
 
