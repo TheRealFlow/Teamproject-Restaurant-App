@@ -13,8 +13,13 @@ export default function ProductDetails({product, onClose}: { product: Product; o
 
     return (
         <>
+
+            <li className={"liDetails"}>
+                <button>x</button>
+
             <li>
                 <button onClick={onClose}>x</button>
+
                 <img alt={""} src={product.image}/>
                 <h2>{product.name}</h2>
                 <h4>{convert.format(product.price)}</h4>

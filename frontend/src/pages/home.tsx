@@ -10,8 +10,8 @@ export default function Home() {
 
             <br></br>
             <button>Filter Function</button>
-            <ProductListUser />
 
+            <ProductListUser />
         </>
     )
 }

@@ -8,8 +8,23 @@ import ShoppingCart from "./pages/shoppingCart";
 
 function App() {
 
-  return (
+    const linkStyle = {
+
+        textDecoration: "none",
+        color: 'white'
+
+    };
+
+
+    return (
       <>
+              <ul className={"ulNav"}>
+                  <li className={"liNav"}><Link className={"a"} to={"/allProducts"} style={linkStyle}>All Products</Link></li>
+                  <li className={"liNav"}><Link className={"a"} to={"/starter"} style={linkStyle} >Starter</Link></li>
+                  <li className={"liNav"}><Link className={"a"} to={"/mainCourse"} style={linkStyle} >Main Course</Link></li>
+                  <li className={"liNav"}><Link  className={"a"} to={"/dessert"} style={linkStyle}>Dessert</Link></li>
+              </ul>
+              
           <BrowserRouter>
               <ul>
                   <li><Link  to={"/admin"}>Login</Link></li>
@@ -26,7 +41,6 @@ function App() {
 
               </Routes>
           </BrowserRouter>
-
       </>
   );
 }
