@@ -3,30 +3,33 @@ import axios from "axios";
 import {Product} from "../Components/Product";
 
 export default function useProducts() {
-    const [products, setProducts] = useState<Product[]>([])
+    const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
         (async () => {
-            const response = await axios.get("/products")
-            setProducts(response.data);
+            const response = await axios.get("/products");
+            setProducts(response.data.map((product: Product) => ({
+                ...product,
+            })));
         })();
     }, []);
 
-    async function deleteProduct(id: string) {
+    const addProduct = async (product: { image: string; price: number; name: string; description: string; category: string }) => {
+        const res = await axios.post('/products', product);
+        setProducts([...products, res.data]);
+    };
+
+    const deleteProduct = async (id: string) => {
         await axios.delete(`/products/${id}`);
-        setProducts(products.filter(product => product.id !== product.id))
-    }
+        setProducts(products.filter(p => p.id !== id));
+    };
 
-    async function editProduct(id: string) {
-        const updated = {...products}
-        await axios.put(`/products/${id}`, updated);
-        setProducts(products.map(product => product.id === product.id ? {...product, ...updated} : product))
-    }
+    const updateProduct = async (product: { id: string, image: string; price: number; name: string; description: string; category: string }) => {
+        const res = await axios.put(`/products/${product.id}`, product);
+        setProducts(
+            products.map(p => (p.id === product.id ? res.data : p))
+        );
+    };
 
-    async function addProduct(product: Product) {
-        const response = await axios.post("/products", product);
-        setProducts([...products, response.data]);
-    }
-
-    return {products, deleteProduct, addProduct, editProduct}
-}
+    return { products, addProduct, deleteProduct, updateProduct };
+};

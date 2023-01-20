@@ -1,11 +1,15 @@
 import {useState} from "react";
 
 import AddProductForm from "../Components/AddProductForm";
+import ProductListAdmin from "../Components/ProductListAdmin";
+import useProducts from "../hooks/useProducts";
 
 
 export default function Admin() {
+    const {products, deleteProduct, updateProduct} = useProducts();
     const [showAddForm, setShowAddForm] = useState(false);
-    const [buttonClicked, setButtonClicked] = useState("Add new Product")
+    const [buttonClicked, setButtonClicked] = useState("Add new Product");
+
 
     const handleShowAddForm = () => {
         setShowAddForm(current => !current);
@@ -14,7 +18,7 @@ export default function Admin() {
         setButtonClicked(buttonClicked === "Add new Product" ?
             "Close Formular" : "Add new Product")
     }
-    function clickAction() {
+    function showAddProductForm() {
         handleButtonClick();
         handleShowAddForm()
     }
@@ -23,11 +27,11 @@ export default function Admin() {
         <>
             <h1>Admin Dashboard</h1>
 
-            <button onClick={clickAction}>{buttonClicked}</button>
+            <button onClick={showAddProductForm}>{buttonClicked}</button>
             {showAddForm && (
-                <AddProductForm/>
+                <AddProductForm />
             )}
-
+            <ProductListAdmin deleteProduct={deleteProduct} products={products}  updateProduct={updateProduct}/>
         </>
     )
 }

@@ -2,7 +2,7 @@ import "./style.css"
 import useProducts from "../../hooks/useProducts";
 import ProductCardUser from "../ProductCardUser";
 
-export default function ProductList() {
+export default function ProductListUser() {
     const {products} = useProducts();
 
     return (
