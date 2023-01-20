@@ -6,7 +6,7 @@ import useProducts from "../hooks/useProducts";
 
 
 export default function Admin() {
-    const {products, deleteProduct} = useProducts();
+    const {products, deleteProduct, updateProduct} = useProducts();
     const [showAddForm, setShowAddForm] = useState(false);
     const [buttonClicked, setButtonClicked] = useState("Add new Product");
 
@@ -31,7 +31,7 @@ export default function Admin() {
             {showAddForm && (
                 <AddProductForm />
             )}
-            <ProductListAdmin deleteProduct={deleteProduct} products={products}/>
+            <ProductListAdmin deleteProduct={deleteProduct} products={products}  updateProduct={updateProduct}/>
         </>
     )
 }

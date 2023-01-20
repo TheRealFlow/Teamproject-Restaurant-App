@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./style.css"
 import useProducts from "../../hooks/useProducts";
+import {useNavigate} from "react-router-dom";
 
 interface Props {}
 const categories = ["Vorspeise", "Hauptgericht", "Dessert", "Getränk"];
@@ -12,21 +13,23 @@ const AddProductForm: React.FC<Props> = () => {
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
     const {addProduct} = useProducts();
+    const navigate = useNavigate();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const newProduct = (e: React.FormEvent) => {
         e.preventDefault();
-        addProduct({ name, price, image, description, category });
+        addProduct({name, price, image, description, category});
         setName("");
         setPrice(0);
         setImage("");
         setDescription("");
         setCategory("");
+        navigate("/");
     };
 
     return(
         <>
             <h1>Add new Product</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={newProduct}>
             <input type={"text"} value={name} placeholder={"Name"} onChange={e => setName(e.target.value)}/>
             <input type={"number"} value={price} placeholder={"Price"} onChange={e => setPrice(parseFloat(e.target.value))}/>
             <input type={"url"} value={image} placeholder={"Image URL"} onChange={e => setImage(e.target.value)}/>

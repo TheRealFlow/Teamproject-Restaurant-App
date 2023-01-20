@@ -7,8 +7,10 @@ export default function useProducts() {
 
     useEffect(() => {
         (async () => {
-            const res = await axios.get('/products');
-            setProducts(res.data);
+            const response = await axios.get("/products");
+            setProducts(response.data.map((product: Product) => ({
+                ...product,
+            })));
         })();
     }, []);
 
@@ -17,17 +19,17 @@ export default function useProducts() {
         setProducts([...products, res.data]);
     };
 
-    const updateProduct = async (product: Product) => {
+    const deleteProduct = async (id: string) => {
+        await axios.delete(`/products/${id}`);
+        setProducts(products.filter(p => p.id !== id));
+    };
+
+    const updateProduct = async (product: { id: string, image: string; price: number; name: string; description: string; category: string }) => {
         const res = await axios.put(`/products/${product.id}`, product);
         setProducts(
             products.map(p => (p.id === product.id ? res.data : p))
         );
     };
 
-    const deleteProduct = async (id: string) => {
-        await axios.delete(`/products/${id}`);
-        setProducts(products.filter(p => p.id !== id));
-    };
-
-    return { products, addProduct, updateProduct, deleteProduct };
+    return { products, addProduct, deleteProduct, updateProduct };
 };

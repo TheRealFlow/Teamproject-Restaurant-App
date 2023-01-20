@@ -1,18 +1,18 @@
 import "./style.css"
 import {Product} from "../Product";
-import {useState} from "react";
 import UpdateProductForm from "../UpdateProductForm";
+import {useState} from "react";
 
 
 type ProductCardProps = {
     product: Product;
     deleteProduct: (id: string) => void;
+    updateProduct: (product: { id: string, image: string; price: number; name: string; description: string; category: string }) => void;
 }
 
 export default function ProductCardAdmin(props: ProductCardProps) {
-    const [productId, setProductId] = useState("");
     const [showEditForm, setShowEditForm] = useState(false);
-    const [editClicked, setEditClicked] = useState("Edit")
+    const [editClicked, setEditClicked] = useState("Edit");
 
     const deleteHandler = () => {
         if (props.product.id === undefined){
@@ -39,6 +39,7 @@ export default function ProductCardAdmin(props: ProductCardProps) {
         handleButtonClick()
     }
 
+
     return (
         <li>
             <img alt={""} src={props.product.image}/>
@@ -48,7 +49,7 @@ export default function ProductCardAdmin(props: ProductCardProps) {
 
             <button onClick={showEditProductForm}>{editClicked}</button>
             {showEditForm && (
-                <UpdateProductForm id={productId} />
+                <UpdateProductForm product={props.product} updateProduct={props.updateProduct}/>
             )}
 
             <button className={"delete-btn"} onClick={deleteHandler}>Delete</button>

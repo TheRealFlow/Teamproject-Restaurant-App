@@ -6,14 +6,10 @@ import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import ShoppingCart from "./pages/shoppingCart";
 
 
-
-
 function App() {
 
   return (
       <>
-
-
           <BrowserRouter>
               <ul>
                   <li><Link  to={"/admin"}>Login</Link></li>
@@ -23,10 +19,9 @@ function App() {
 
               </ul>
 
-
               <Routes>
                   <Route path={"/"} element={<Home/>}></Route>
-                  <Route path={"/admin"} element={<Admin/>}></Route>
+                  <Route path={"/admin"} element={<Admin />}></Route>
                   <Route path={"/shoppingcart"} element={<ShoppingCart/>}></Route>
 
               </Routes>
